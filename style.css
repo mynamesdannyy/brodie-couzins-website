@@ -936,6 +936,22 @@ section {
     transition: all 0.3s ease;
 }
 
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e90ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.form-group select option {
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    padding: 0.5rem;
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -952,12 +968,20 @@ section {
     pointer-events: none;
 }
 
+/* Special handling for select label */
+.form-group.select-group label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
 .form-group input:focus + label,
 .form-group input:valid + label,
 .form-group select:focus + label,
 .form-group select:valid + label,
 .form-group textarea:focus + label,
-.form-group textarea:valid + label {
+.form-group textarea:valid + label,
+.form-group.has-value select + label {
     top: -0.5rem;
     font-size: 0.8rem;
     color: var(--primary-color);

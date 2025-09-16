@@ -188,6 +188,13 @@ if (form) {
     const formInputs = form.querySelectorAll('input, select, textarea');
     
     formInputs.forEach(input => {
+        // Check initial state for select elements
+        if (input.tagName === 'SELECT') {
+            if (input.value) {
+                input.parentElement.classList.add('has-value');
+            }
+        }
+        
         input.addEventListener('focus', () => {
             input.parentElement.classList.add('focused');
         });
@@ -197,6 +204,17 @@ if (form) {
                 input.parentElement.classList.remove('focused');
             }
         });
+        
+        // Handle select change
+        if (input.tagName === 'SELECT') {
+            input.addEventListener('change', () => {
+                if (input.value) {
+                    input.parentElement.classList.add('has-value');
+                } else {
+                    input.parentElement.classList.remove('has-value');
+                }
+            });
+        }
         
         // Add typing effect
         input.addEventListener('input', () => {
